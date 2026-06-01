@@ -69,9 +69,11 @@ export default function Home() {
 
 function validateLeadForm() {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const namePattern = /^[a-zA-Z\s.'-]+$/;
   const phoneDigits = phone.replace(/\D/g, "");
+  const billDigits = currentBill.replace(/[^0-9.]/g, "");
 
-  if (name.trim().length < 2) {
+  if (name.trim().length < 2 || !namePattern.test(name.trim())) {
     return "Please enter a valid full name.";
   }
 
@@ -79,20 +81,27 @@ function validateLeadForm() {
     return "Please enter a valid business name.";
   }
 
-  if (!emailPattern.test(email)) {
+  if (!emailPattern.test(email.trim())) {
     return "Please enter a valid email address.";
   }
 
-  if (phoneDigits.length < 10) {
-    return "Please enter a valid phone number with at least 10 digits.";
+  if (phoneDigits.length !== 10) {
+    return "Please enter a valid 10-digit phone number.";
   }
 
-  if (currentProvider.trim().length > 0 && currentProvider.trim().length < 2) {
+  if (
+    currentProvider.trim().length > 0 &&
+    currentProvider.trim().length < 2
+  ) {
     return "Please enter a valid current provider name.";
   }
 
-  if (currentBill.trim().length > 0 && currentBill.trim().length < 2) {
-    return "Please enter a valid current monthly bill.";
+  if (currentBill.trim().length > 0) {
+    const billNumber = Number(billDigits);
+
+    if (!billDigits || Number.isNaN(billNumber) || billNumber <= 0) {
+      return "Please enter a valid current monthly bill amount.";
+    }
   }
 
   return "";
@@ -142,7 +151,15 @@ setLoading(true);
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+  <div className="text-2xl font-bold text-white">
+    Prime<span className="text-blue-500">Connect</span>
+  </div>
+
+ 
+</nav>
       <section className="max-w-7xl mx-auto px-6 py-24 text-center">
+        
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
           Compare Business Internet Providers
           <span className="block text-blue-500">In Your Area</span>
@@ -152,6 +169,7 @@ setLoading(true);
           Get fiber, wireless, VoIP, and business internet solutions customized
           for your company.
         </p>
+
 
         <div className="max-w-xl mx-auto flex flex-col md:flex-row gap-4">
           
@@ -408,12 +426,16 @@ setLoading(true);
           />
 
           <input
-            type="text"
-            placeholder="Phone Number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="border rounded-xl px-4 py-3"
-          />
+  type="text"
+  placeholder="Phone Number"
+  value={phone}
+  maxLength={14}
+  onChange={(e) => {
+    const onlyNumbers = e.target.value.replace(/\D/g, "");
+    setPhone(onlyNumbers);
+  }}
+  className="border rounded-xl px-4 py-3"
+/>
 
           <input
             type="text"
@@ -424,12 +446,15 @@ setLoading(true);
           />
 
           <input
-            type="text"
-            placeholder="Current Monthly Bill"
-            value={currentBill}
-            onChange={(e) => setCurrentBill(e.target.value)}
-            className="border rounded-xl px-4 py-3"
-          />
+  type="text"
+  placeholder="Current Monthly Bill"
+  value={currentBill}
+  onChange={(e) => {
+    const onlyValidCharacters = e.target.value.replace(/[^0-9.$]/g, "");
+    setCurrentBill(onlyValidCharacters);
+  }}
+  className="border rounded-xl px-4 py-3"
+/>
         </div>
 
         <button
