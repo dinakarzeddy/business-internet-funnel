@@ -121,7 +121,7 @@ if (validationMessage) {
 }
 setLoading(true);
 
-  const { error } = await supabase.from("leads").insert([
+  const { error } = await supabase.from("business_internet_leads").insert([
     {
       name: name,
       email: email,
@@ -134,6 +134,7 @@ setLoading(true);
       knows_package: decision,
       current_provider: currentProvider,
       current_bill: currentBill,
+      source: 'PrimeConnect Website',
     },
   ]);
 
