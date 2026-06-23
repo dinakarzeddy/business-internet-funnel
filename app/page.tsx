@@ -146,6 +146,22 @@ setLoading(true);
     return;
   }
 
+  // Send Discord notification
+  await fetch('/api/business-lead', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name,
+      email,
+      phone,
+      business_name: businessName,
+      business_type: businessType,
+      zip_code: zipCode,
+      employee_size: employeeSize,
+      current_provider: currentProvider,
+    }),
+  })
+
   setSubmitted(true);
 }
 
@@ -243,9 +259,9 @@ setLoading(true);
                   className="w-full md:w-1/2 border rounded-xl px-4 py-3"
                 >
                   <option value="">Select employee size</option>
-                  <option value="1-5">1–5 employees</option>
-                  <option value="6-20">6–20 employees</option>
-                  <option value="21-50">21–50 employees</option>
+                  <option value="1-5">1-5 employees</option>
+                  <option value="6-20">6-20 employees</option>
+                  <option value="21-50">21-50 employees</option>
                   <option value="50+">50+ employees</option>
                 </select>
 
