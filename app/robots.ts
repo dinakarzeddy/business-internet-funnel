@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://business-internet-funnel-abc123.vercel.app";
+  const baseUrl = "https://primeconnectt.amcportal.app";
 
   return {
     rules: {

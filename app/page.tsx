@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
 import { supabase } from "@/lib/supabase";
 
 export default function Home() {
@@ -173,6 +174,41 @@ setLoading(true);
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'What is the best business internet provider in Oklahoma?',
+              acceptedAnswer: { '@type': 'Answer', text: 'The best provider depends on your location and needs. AT&T Fiber, Spectrum Business, and Comcast Business are popular options in Oklahoma City and Tulsa. PrimeConnect helps you compare all available providers in your area.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'How much does business internet cost in Oklahoma?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Business internet in Oklahoma typically ranges from $50 to $500+ per month depending on speed, provider, and contract terms. PrimeConnect offers a free consultation to help you find the most cost-effective solution.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'What is the difference between business and residential internet?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Business internet offers faster speeds, dedicated bandwidth, service level agreements, static IP addresses, and priority customer support.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Do you offer fiber internet for businesses in Oklahoma?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Yes, PrimeConnect works with multiple fiber internet providers serving Oklahoma City, Tulsa, and surrounding areas.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'How long does business internet installation take?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Installation typically takes 3-10 business days for cable/wireless, and 2-4 weeks for fiber depending on provider and location.' },
+            },
+          ],
+        })}}
+      />
       <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
   <div className="text-2xl font-bold text-white">
     Prime<span className="text-blue-500">Connect</span>
@@ -506,6 +542,43 @@ setLoading(true);
           </div>
         </section>
       )}
+
+{/* FAQ Section */}
+      <section className="max-w-3xl mx-auto px-6 pb-24">
+        <h2 className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+        <div className="flex flex-col gap-4">
+          {[
+            {
+              q: 'What is the best business internet provider in Oklahoma?',
+              a: 'The best provider depends on your location and needs. AT&T Fiber, Spectrum Business, and Comcast Business are popular options in Oklahoma City and Tulsa. PrimeConnect helps you compare all available providers in your area and find the best fit for your business.',
+            },
+            {
+              q: 'How much does business internet cost in Oklahoma?',
+              a: 'Business internet in Oklahoma typically ranges from $50 to $500+ per month depending on speed, provider, and contract terms. PrimeConnect offers a free consultation to help you find the most cost-effective solution for your business size and needs.',
+            },
+            {
+              q: 'What is the difference between business and residential internet?',
+              a: 'Business internet offers faster speeds, dedicated bandwidth, service level agreements (SLAs), static IP addresses, and priority customer support. Residential internet is shared and not designed for business-critical applications.',
+            },
+            {
+              q: 'Do you offer fiber internet for businesses in Oklahoma?',
+              a: 'Yes, PrimeConnect works with multiple fiber internet providers serving Oklahoma City, Tulsa, and surrounding areas. Fiber offers the fastest and most reliable connection for businesses.',
+            },
+            {
+              q: 'How long does business internet installation take?',
+              a: 'Installation timelines vary by provider and location. Typically 3-10 business days for cable/wireless, and 2-4 weeks for fiber. Our specialists will give you an accurate timeline during your free consultation.',
+            },
+          ].map((item, i) => (
+            <div key={i} className="bg-slate-900 rounded-2xl p-6">
+              <h3 className="font-bold text-lg mb-2">{item.q}</h3>
+              <p className="text-slate-400">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
     </main>
   );
 }
+
+    

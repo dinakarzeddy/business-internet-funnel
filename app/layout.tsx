@@ -13,9 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Compare Business Internet Providers | PrimeConnect",
-  description: "Get fiber, wireless, VoIP, and business internet solutions customized for your company. Compare providers in your area and check availability today.",
-  keywords: "business internet, fiber internet, VoIP, business broadband, compare internet providers",
+  title: "Business Internet Providers Oklahoma | PrimeConnect",
+  description: "Compare business internet providers in Oklahoma. Get fiber, wireless, VoIP, and broadband solutions customized for your company. Free consultation with PrimeConnect today.",
+  keywords: "business internet Oklahoma, business internet Oklahoma City, business fiber internet Tulsa, VoIP Oklahoma, business broadband Oklahoma, compare business internet providers Oklahoma",
+  alternates: {
+    canonical: "https://primeconnectt.amcportal.app",
+  },
 };
 
 export default function RootLayout({

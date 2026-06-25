@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://business-internet-funnel-abc123.vercel.app";
+  const baseUrl = "https://primeconnectt.amcportal.app";
 
   return [
     {
@@ -11,10 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/admin/login`,
+      url: `${baseUrl}/thank-you`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.2,
+      priority: 0.3,
     },
   ];
 }
