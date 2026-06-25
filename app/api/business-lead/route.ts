@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { name, email, phone, business_name, business_type, zip_code, employee_size, current_provider } = body
+    const { name, email, phone, business_name, business_type, zip_code, city, employee_size, current_provider } = body
 
     const webhookUrl = process.env.DISCORD_BUSINESS_WEBHOOK_URL
 
@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
           { name: 'Email', value: email || 'N/A', inline: true },
           { name: 'Business Type', value: business_type || 'N/A', inline: true },
           { name: 'ZIP Code', value: zip_code || 'N/A', inline: true },
+          { name: 'City', value: city || 'N/A', inline: true },
           { name: 'Employees', value: employee_size || 'N/A', inline: true },
           { name: 'Current Provider', value: current_provider || 'N/A', inline: true },
         ],

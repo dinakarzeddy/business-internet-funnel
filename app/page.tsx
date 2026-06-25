@@ -1,9 +1,11 @@
-"use client";
+'use client'
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
 export default function Home() {
+  const router = useRouter();
   const [showBusinessTypes, setShowBusinessTypes] = useState(false);
   const [zipCode, setZipCode] = useState("");
   const [businessType, setBusinessType] = useState("");
@@ -17,6 +19,7 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [currentProvider, setCurrentProvider] = useState("");
   const [currentBill, setCurrentBill] = useState("");
+  const [city, setCity] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState("");
@@ -129,6 +132,7 @@ setLoading(true);
       business_name: businessName,
       business_type: businessType,
       zip_code: zipCode,
+      city: city,
       employee_size: employeeSize,
       pain_points: painPoints,
       knows_package: decision,
@@ -157,12 +161,13 @@ setLoading(true);
       business_name: businessName,
       business_type: businessType,
       zip_code: zipCode,
+      city: city,
       employee_size: employeeSize,
       current_provider: currentProvider,
     }),
   })
 
-  setSubmitted(true);
+  router.push('/thank-you');
 }
 
 
@@ -405,10 +410,11 @@ setLoading(true);
         )}
 
         {submitted && (
-          <p className="mb-4 text-green-600 font-semibold">
-            Quote request submitted successfully.
-            Our team will contact you soon.
-          </p>
+          <div className="mb-6 bg-green-50 border border-green-200 rounded-2xl p-6 text-center">
+            <p className="text-3xl mb-2">✅</p>
+            <p className="text-green-700 font-bold text-lg mb-1">Quote Request Submitted!</p>
+            <p className="text-green-600 text-sm">Our team will contact you within 24 hours to discuss the best internet solution for your business.</p>
+          </div>
         )}
 
         {formError && (
@@ -454,6 +460,14 @@ setLoading(true);
   className="border rounded-xl px-4 py-3"
 />
 
+            <input
+            type="text"
+            placeholder="City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            className="border rounded-xl px-4 py-3"
+          />
+
           <input
             type="text"
             placeholder="Current Provider"
@@ -477,7 +491,7 @@ setLoading(true);
         <button
           onClick={submitLead}
           disabled={loading}
-          className="mt-6 bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700 disabled:bg-slate-400"
+         className="mt-6 bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 disabled:bg-slate-400 font-semibold"
         >
           {loading ? "Submitting..." : "Submit Quote Request"}
         </button>
