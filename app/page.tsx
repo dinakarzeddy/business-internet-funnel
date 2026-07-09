@@ -1,12 +1,44 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Script from "next/script";
 import { supabase } from "@/lib/supabase";
 
 export default function Home() {
   const router = useRouter();
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    setUtmSource(params.get('utm_source') || 'Direct')
+    setUtmMedium(params.get('utm_medium') || 'None')
+    setUtmCampaign(params.get('utm_campaign') || 'None')
+    setUtmAdgroup(params.get('utm_adgroup') || 'None')
+    setUtmKeyword(params.get('utm_keyword') || 'None')
+    setLandingPage(window.location.href)
+
+    // Detect device type
+    const ua = navigator.userAgent
+    if (/tablet|ipad|playbook|silk/i.test(ua)) {
+      setDeviceType('Tablet')
+    } else if (/mobile|iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(ua)) {
+      setDeviceType('Mobile')
+    } else {
+      setDeviceType('Desktop')
+    }
+
+    // Detect browser
+    if (ua.indexOf('Chrome') > -1 && ua.indexOf('Edg') === -1) {
+      setBrowser('Chrome')
+    } else if (ua.indexOf('Safari') > -1 && ua.indexOf('Chrome') === -1) {
+      setBrowser('Safari')
+    } else if (ua.indexOf('Firefox') > -1) {
+      setBrowser('Firefox')
+    } else if (ua.indexOf('Edg') > -1) {
+      setBrowser('Edge')
+    } else {
+      setBrowser('Other')
+    }
+  }, [])
   const [showBusinessTypes, setShowBusinessTypes] = useState(false);
   const [zipCode, setZipCode] = useState("");
   const [businessType, setBusinessType] = useState("");
@@ -21,6 +53,14 @@ export default function Home() {
   const [currentProvider, setCurrentProvider] = useState("");
   const [currentBill, setCurrentBill] = useState("");
   const [city, setCity] = useState("");
+  const [utmSource, setUtmSource] = useState("")
+  const [utmMedium, setUtmMedium] = useState("")
+  const [utmCampaign, setUtmCampaign] = useState("")
+  const [utmAdgroup, setUtmAdgroup] = useState("")
+  const [utmKeyword, setUtmKeyword] = useState("")
+  const [deviceType, setDeviceType] = useState("")
+  const [browser, setBrowser] = useState("")
+  const [landingPage, setLandingPage] = useState("")
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState("");
@@ -139,7 +179,15 @@ setLoading(true);
       knows_package: decision,
       current_provider: currentProvider,
       current_bill: currentBill,
-      source: 'PrimeConnect Website',
+      source: utmSource !== 'Direct' ? utmSource : 'PrimeConnect Website',
+      utm_source: utmSource,
+      utm_medium: utmMedium,
+      utm_campaign: utmCampaign,
+      utm_adgroup: utmAdgroup,
+      utm_keyword: utmKeyword,
+      device_type: deviceType,
+      browser: browser,
+      landing_page: landingPage,
     },
   ]);
 
