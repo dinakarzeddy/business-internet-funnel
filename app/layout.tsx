@@ -19,6 +19,32 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://primeconnectt.amcportal.app",
   },
+  openGraph: {
+    title: "Business Internet Providers Oklahoma | PrimeConnect",
+    description: "Compare business internet providers in Oklahoma. Get fiber, wireless, VoIP, and broadband solutions for your company. Free consultation today.",
+    url: "https://primeconnectt.amcportal.app",
+    siteName: "PrimeConnect",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "https://primeconnectt.amcportal.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "PrimeConnect — Business Internet Providers Oklahoma",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Business Internet Providers Oklahoma | PrimeConnect",
+    description: "Compare business internet providers in Oklahoma. Free consultation with PrimeConnect today.",
+    images: ["https://primeconnectt.amcportal.app/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
