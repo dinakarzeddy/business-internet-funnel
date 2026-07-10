@@ -7,6 +7,18 @@ import { supabase } from "@/lib/supabase";
 
 export default function Home() {
   const router = useRouter();
+
+  const fireEvent = (eventName: string, params?: Record<string, string>) => {
+    console.log('🔥 fireEvent:', eventName, params)
+    if (typeof window !== 'undefined') {
+      (window as any).dataLayer = (window as any).dataLayer || []
+      ;(window as any).dataLayer.push({
+        event: eventName,
+        ...params,
+      })
+    }
+  }
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     setUtmSource(params.get('utm_source') || 'Direct')
@@ -133,16 +145,20 @@ function validateLeadForm() {
     return "Please enter a valid 10-digit phone number.";
   }
 
-  if (
-    currentProvider.trim().length > 0 &&
-    currentProvider.trim().length < 2
-  ) {
+  if (city.trim().length < 2) {
+    return "Please enter a valid city name.";
+  }
+
+  if (!/^[a-zA-Z\s]+$/.test(city.trim())) {
+    return "City name should contain letters only.";
+  }
+
+  if (currentProvider.trim().length > 0 && currentProvider.trim().length < 2) {
     return "Please enter a valid current provider name.";
   }
 
   if (currentBill.trim().length > 0) {
     const billNumber = Number(billDigits);
-
     if (!billDigits || Number.isNaN(billNumber) || billNumber <= 0) {
       return "Please enter a valid current monthly bill amount.";
     }
@@ -216,6 +232,13 @@ setLoading(true);
     }),
   })
 
+  fireEvent('lead_submitted', {
+    business_type: businessType,
+    employee_size: employeeSize,
+    zip_code: zipCode,
+    utm_source: utmSource,
+    utm_campaign: utmCampaign,
+  })
   router.push('/thank-you');
 }
 
@@ -308,6 +331,30 @@ setLoading(true);
       {showBusinessTypes && (
         <section className="max-w-6xl mx-auto px-6 pb-24">
           <div className="bg-white text-slate-900 rounded-3xl p-8 shadow-2xl">
+            
+            {/* Progress Bar */}
+            <div className="mb-8">
+              <div className="flex justify-between text-xs text-slate-500 mb-2">
+                <span>Business Type</span>
+                <span>Size</span>
+                <span>Challenges</span>
+                <span>Package</span>
+                <span>Contact Info</span>
+              </div>
+              <div className="w-full bg-slate-100 rounded-full h-2">
+                <div
+                  className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+                  style={{
+                    width: showLeadForm ? '100%' :
+                           decision ? '80%' :
+                           painPoints.length > 0 ? '60%' :
+                           employeeSize ? '40%' :
+                           businessType ? '20%' : '5%'
+                  }}
+                />
+              </div>
+            </div>
+
             <h2 className="text-3xl font-bold mb-3">
               What type of business do you have?
             </h2>
@@ -320,7 +367,10 @@ setLoading(true);
               {businessTypes.map((type) => (
                 <button
                   key={type}
-                  onClick={() => setBusinessType(type)}
+                  onClick={() => {
+  setBusinessType(type)
+  fireEvent('questionnaire_started', { business_type: type })
+}}
                   className={`border rounded-xl p-4 text-left font-medium ${
                     businessType === type
                       ? "border-blue-600 bg-blue-50 text-blue-700"
@@ -334,9 +384,7 @@ setLoading(true);
 
             {businessType && (
               <div className="mt-8">
-                <p className="text-blue-600 font-semibold mb-4">
-                  Selected Business Type: {businessType}
-                </p>
+                
 
                 <h3 className="text-2xl font-bold mb-4">
                   How many employees do you have?
@@ -385,16 +433,7 @@ setLoading(true);
       ))}
     </div>
 
-    {painPoints.length > 0 && (
-      <div className="mt-6 text-green-600 font-semibold">
-        Selected Pain Points:
-        <ul className="list-disc ml-6 mt-2">
-          {painPoints.map((pain) => (
-            <li key={pain}>{pain}</li>
-          ))}
-        </ul>
-      </div>
-    )}
+    
     {painPoints.length > 0 && (
   <div className="mt-8">
     <h3 className="text-2xl font-bold mb-4">
@@ -421,6 +460,7 @@ setLoading(true);
         onClick={() => {
   setDecision("consultation");
   setShowLeadForm(true);
+  fireEvent('questionnaire_completed')
 }}
         className={`border rounded-xl p-5 text-left ${
           decision === "consultation"
@@ -435,14 +475,7 @@ setLoading(true);
       </button>
     </div>
 
-    {decision && (
-      <p className="mt-5 text-green-600 font-semibold">
-        Selected Path:{" "}
-        {decision === "providers"
-          ? "Provider Comparison"
-          : "Free Consultation"}
-      </p>
-    )}
+    
     {decision === "providers" && (
       <div className="mt-8">
         <h3 className="text-2xl font-bold mb-6">
@@ -468,7 +501,10 @@ setLoading(true);
               </p>
 
               <button
-                onClick={() => setShowLeadForm(true)}
+                onClick={() => {
+  setShowLeadForm(true)
+  fireEvent('questionnaire_completed')
+}}
                 className="bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700"
               >
                 Get Quote
@@ -534,12 +570,18 @@ setLoading(true);
 
           <input
   type="text"
-  placeholder="Phone Number"
+  placeholder="Phone Number (e.g. 405-123-4567)"
   value={phone}
   maxLength={14}
   onChange={(e) => {
-    const onlyNumbers = e.target.value.replace(/\D/g, "");
-    setPhone(onlyNumbers);
+    const onlyNumbers = e.target.value.replace(/\D/g, "").slice(0, 10);
+    let formatted = onlyNumbers;
+    if (onlyNumbers.length >= 6) {
+      formatted = `(${onlyNumbers.slice(0,3)}) ${onlyNumbers.slice(3,6)}-${onlyNumbers.slice(6)}`;
+    } else if (onlyNumbers.length >= 3) {
+      formatted = `(${onlyNumbers.slice(0,3)}) ${onlyNumbers.slice(3)}`;
+    }
+    setPhone(formatted);
   }}
   className="border rounded-xl px-4 py-3"
 />
