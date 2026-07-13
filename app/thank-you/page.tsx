@@ -58,8 +58,31 @@ export default function ThankYouPage() {
 
         {/* Contact */}
         <div className="bg-blue-600 rounded-2xl p-6 mb-8">
-          <p className="font-medium mb-1">Have questions? Contact us directly.</p>
-          <p className="text-blue-100 font-bold text-lg">contact@primeconnect.com</p>
+          <p className="font-medium mb-2">Have questions? Contact us directly.</p>
+          <a
+            href="mailto:contact@primeconnect.com"
+            className="text-blue-100 font-bold text-lg hover:text-white transition block mb-3"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                (window as any).dataLayer = (window as any).dataLayer || []
+                ;(window as any).dataLayer.push({ event: 'email_clicked' })
+              }
+            }}
+          >
+            contact@primeconnect.com
+          </a>
+          <a
+            href="tel:+14054089927"
+            className="inline-block bg-white text-blue-600 font-bold px-6 py-3 rounded-xl hover:bg-blue-50 transition"
+            onClick={() => {
+              if (typeof window !== 'undefined') {
+                (window as any).dataLayer = (window as any).dataLayer || []
+                ;(window as any).dataLayer.push({ event: 'phone_number_clicked' })
+              }
+            }}
+          >
+            📞 Call Now — (405) 408-9927
+          </a>
         </div>
 
         {/* Back Button */}
