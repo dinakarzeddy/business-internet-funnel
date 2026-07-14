@@ -1,9 +1,6 @@
-import Link from 'next/link'
+'use client'
 
-export const metadata = {
-  title: 'Thank You | PrimeConnect Business Internet',
-  description: 'Your business internet quote request has been submitted. Our team will contact you within 24 hours.',
-}
+import Link from 'next/link'
 
 export default function ThankYouPage() {
   return (
