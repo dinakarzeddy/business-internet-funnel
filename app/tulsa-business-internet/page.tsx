@@ -1,0 +1,85 @@
+import Link from 'next/link'
+
+export const metadata = {
+  title: 'Business Internet Providers Tulsa | PrimeConnect',
+  description: 'Compare business internet providers in Tulsa. Get fiber, wireless, VoIP, and broadband solutions for Tulsa businesses. Free consultation with PrimeConnect.',
+}
+
+export default function TulsaPage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-white">
+      <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="text-2xl font-bold text-white">Prime<span className="text-blue-500">Connect</span></div>
+        <Link href="/" className="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold hover:bg-blue-700 transition text-sm">Get Free Quote</Link>
+      </nav>
+
+      <section className="max-w-5xl mx-auto px-6 py-16 text-center">
+        <div className="inline-block bg-blue-900 text-blue-300 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">Tulsa, OK</div>
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">Business Internet Providers<span className="block text-blue-500">in Tulsa</span></h1>
+        <p className="text-slate-400 text-lg max-w-2xl mx-auto mb-10">Compare fiber, wireless, VoIP, and broadband internet solutions for Tulsa businesses. Free consultation included.</p>
+        <Link href="/" className="bg-blue-600 text-white font-bold px-10 py-4 rounded-xl hover:bg-blue-700 transition text-lg inline-block">Check Availability in Tulsa →</Link>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-6 pb-16">
+        <h2 className="text-2xl font-bold text-center mb-8">Available Providers in Tulsa</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {[
+            { name: 'AT&T Fiber', speed: '300 Mbps – 5 Gbps', best: 'Best for offices needing reliable fiber' },
+            { name: 'Spectrum Business', speed: '300 Mbps – 1 Gbps', best: 'Best for small and medium businesses' },
+            { name: 'Cox Business', speed: '50 Mbps – 1 Gbps', best: 'Best for Tulsa area businesses' },
+            { name: 'Verizon 5G Business', speed: 'Wireless Business Internet', best: 'Best for backup internet' },
+          ].map((p) => (
+            <div key={p.name} className="bg-slate-900 border border-slate-700 rounded-2xl p-6">
+              <h3 className="text-xl font-bold mb-2">{p.name}</h3>
+              <p className="text-slate-400 text-sm mb-1"><strong className="text-white">Speed:</strong> {p.speed}</p>
+              <p className="text-slate-400 text-sm mb-4"><strong className="text-white">Best for:</strong> {p.best}</p>
+              <Link href="/" className="bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition inline-block">Get Quote →</Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-slate-900 py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-2xl font-bold text-center mb-8">Why Tulsa Businesses Choose PrimeConnect</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: 'Local Tulsa Experts', desc: 'We know the Tulsa market and which providers deliver the best service in each neighborhood.' },
+              { title: 'Compare All Providers', desc: 'One call compares AT&T, Spectrum, Cox, and more — saving you hours of research.' },
+              { title: 'Fast Installation', desc: 'Most Tulsa businesses get connected within 5-7 business days of signing up.' },
+              { title: 'No Hidden Fees', desc: 'We show you the real price upfront — no surprises on your first bill.' },
+            ].map((item) => (
+              <div key={item.title} className="border-l-4 border-blue-500 pl-5">
+                <h3 className="font-bold mb-2">{item.title}</h3>
+                <p className="text-slate-400 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-3xl mx-auto px-6 py-16">
+        <h2 className="text-2xl font-bold text-center mb-8">Business Internet FAQ — Tulsa</h2>
+        <div className="flex flex-col gap-4">
+          {[
+            { q: 'What is the best business internet provider in Tulsa?', a: 'AT&T Fiber and Cox Business are the top choices for most Tulsa businesses. PrimeConnect helps you compare all options available at your specific address.' },
+            { q: 'How much does business internet cost in Tulsa?', a: 'Business internet in Tulsa typically ranges from $60 to $500+ per month depending on speed and provider. PrimeConnect offers a free consultation to find the most cost-effective solution.' },
+            { q: 'Is fiber internet available for businesses in Tulsa?', a: 'Yes — AT&T Fiber is available across much of Tulsa offering speeds from 300 Mbps to 5 Gbps for businesses.' },
+            { q: 'How quickly can I get business internet installed in Tulsa?', a: 'Most providers can install business internet in Tulsa within 5-10 business days.' },
+          ].map((item, i) => (
+            <div key={i} className="bg-slate-900 rounded-2xl p-6">
+              <h3 className="font-bold mb-2">{item.q}</h3>
+              <p className="text-slate-400 text-sm">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-blue-600 py-16 text-center px-6">
+        <h2 className="text-3xl font-bold mb-4">Ready to Find the Best Business Internet in Tulsa?</h2>
+        <p className="text-blue-100 mb-8 text-lg">Free consultation. No commitment. Takes 2 minutes.</p>
+        <Link href="/" className="bg-white text-blue-600 font-bold px-10 py-4 rounded-xl hover:bg-blue-50 transition text-lg inline-block">Check If You Qualify — Free</Link>
+      </section>
+    </main>
+  )
+}
