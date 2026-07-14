@@ -287,7 +287,7 @@ setLoading(true);
 
  
 </nav>
-      <section className="max-w-7xl mx-auto px-6 py-24 text-center">
+      <section id="questionnaire" className="max-w-7xl mx-auto px-6 py-24 text-center">
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
           Compare Business Internet Providers

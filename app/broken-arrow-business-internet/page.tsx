@@ -10,14 +10,14 @@ export default function BrokenArrowPage() {
     <main className="min-h-screen bg-slate-950 text-white">
       <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
         <div className="text-2xl font-bold text-white">Prime<span className="text-blue-500">Connect</span></div>
-        <Link href="/" className="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold hover:bg-blue-700 transition text-sm">Get Free Quote</Link>
+        <Link href="/#questionnaire" className="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold hover:bg-blue-700 transition text-sm">Get Free Quote</Link>
       </nav>
 
       <section className="max-w-5xl mx-auto px-6 py-16 text-center">
         <div className="inline-block bg-blue-900 text-blue-300 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">Broken Arrow, OK</div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6">Business Internet Providers<span className="block text-blue-500">in Broken Arrow</span></h1>
         <p className="text-slate-400 text-lg max-w-2xl mx-auto mb-10">Compare fiber, wireless, VoIP, and broadband internet solutions for Broken Arrow businesses. Free consultation included.</p>
-        <Link href="/" className="bg-blue-600 text-white font-bold px-10 py-4 rounded-xl hover:bg-blue-700 transition text-lg inline-block">Check Availability in Broken Arrow →</Link>
+        <Link href="/#questionnaire" className="bg-blue-600 text-white font-bold px-10 py-4 rounded-xl hover:bg-blue-700 transition text-lg inline-block">Check Availability in Broken Arrow →</Link>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-16">
@@ -33,7 +33,7 @@ export default function BrokenArrowPage() {
               <h3 className="text-xl font-bold mb-2">{p.name}</h3>
               <p className="text-slate-400 text-sm mb-1"><strong className="text-white">Speed:</strong> {p.speed}</p>
               <p className="text-slate-400 text-sm mb-4"><strong className="text-white">Best for:</strong> {p.best}</p>
-              <Link href="/" className="bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition inline-block">Get Quote →</Link>
+              <Link href="/#questionnaire" className="bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 transition inline-block">Get Quote →</Link>
             </div>
           ))}
         </div>
@@ -78,7 +78,7 @@ export default function BrokenArrowPage() {
       <section className="bg-blue-600 py-16 text-center px-6">
         <h2 className="text-3xl font-bold mb-4">Ready to Find the Best Business Internet in Broken Arrow?</h2>
         <p className="text-blue-100 mb-8 text-lg">Free consultation. No commitment. Takes 2 minutes.</p>
-        <Link href="/" className="bg-white text-blue-600 font-bold px-10 py-4 rounded-xl hover:bg-blue-50 transition text-lg inline-block">Check If You Qualify — Free</Link>
+        <Link href="/#questionnaire" className="bg-white text-blue-600 font-bold px-10 py-4 rounded-xl hover:bg-blue-50 transition text-lg inline-block">Check If You Qualify — Free</Link>
       </section>
     </main>
   )

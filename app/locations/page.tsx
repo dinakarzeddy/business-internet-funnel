@@ -57,7 +57,7 @@ export default function LocationsPage() {
         <div className="text-2xl font-bold text-white">
           Prime<span className="text-blue-500">Connect</span>
         </div>
-        <Link href="/" className="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold hover:bg-blue-700 transition text-sm">
+        <Link href="/#questionnaire" className="bg-blue-600 text-white px-5 py-2 rounded-xl font-semibold hover:bg-blue-700 transition text-sm">
           Get Free Quote
         </Link>
       </nav>
@@ -98,7 +98,7 @@ export default function LocationsPage() {
           <p className="text-blue-200 text-lg mb-2 font-medium">Don't see your city?</p>
           <p className="text-blue-300 text-sm mb-6">We serve all of Oklahoma. Enter your ZIP code to check availability in your area.</p>
           <Link
-            href="/"
+            href="/#questionnaire"
             className="bg-blue-600 text-white font-bold px-8 py-3 rounded-xl hover:bg-blue-500 transition inline-block"
           >
             Check Your Area →
