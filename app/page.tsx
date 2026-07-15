@@ -9,7 +9,6 @@ export default function Home() {
   const router = useRouter();
 
   const fireEvent = (eventName: string, params?: Record<string, string>) => {
-    console.log('🔥 fireEvent:', eventName, params)
     if (typeof window !== 'undefined') {
       (window as any).dataLayer = (window as any).dataLayer || []
       ;(window as any).dataLayer.push({
