@@ -13,16 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Business Internet Providers Oklahoma | PrimeConnect",
-  description: "Compare business internet providers in Oklahoma. Get fiber, wireless, VoIP, and broadband solutions customized for your company. Free consultation with PrimeConnect today.",
-  keywords: "business internet Oklahoma, business internet Oklahoma City, business fiber internet Tulsa, VoIP Oklahoma, business broadband Oklahoma, compare business internet providers Oklahoma",
+  title: "Business Internet Providers | PrimeConnect",
+  description: "Compare business internet providers in your area. Get fiber, wireless, VoIP, and broadband solutions customized for your company. Free consultation with PrimeConnect today.",
+  keywords: "business internet providers, business fiber internet, VoIP solutions, business broadband, compare business internet providers, business internet near me",
   alternates: {
-    canonical: "https://primeconnectt.amcportal.app",
+    canonical: "https://primeconnectnow.com",
   },
   openGraph: {
-    title: "Business Internet Providers Oklahoma | PrimeConnect",
-    description: "Compare business internet providers in Oklahoma. Get fiber, wireless, VoIP, and broadband solutions for your company. Free consultation today.",
-    url: "https://primeconnectt.amcportal.app",
+    title: "Business Internet Providers | PrimeConnect",
+    description: "Compare business internet providers in your area. Get fiber, wireless, VoIP, and broadband solutions customized for your company. Free consultation with PrimeConnect today.",
+    url: "https://primeconnectnow.com",
     siteName: "PrimeConnect",
     type: "website",
     locale: "en_US",
@@ -65,18 +65,18 @@ export default function RootLayout({
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-TWZ8PLB2');`,
+            })(window,document,'script','dataLayer','GTM-PGXDC5T6');`,
           }}
         />
         {/* Google Analytics 4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BVG7JZMJPD"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3E00Q73LDH"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-BVG7JZMJPD', {
+              gtag('config', 'G-3E00Q73LDH', {
                 page_path: window.location.pathname,
               });
             `,
@@ -87,7 +87,7 @@ export default function RootLayout({
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TWZ8PLB2"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PGXDC5T6"
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}

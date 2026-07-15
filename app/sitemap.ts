@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://primeconnectt.amcportal.app";
+  const baseUrl = "https://primeconnectnow.com";
 
   return [
     {
