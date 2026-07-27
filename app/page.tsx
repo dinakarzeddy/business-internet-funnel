@@ -648,7 +648,53 @@ setLoading(true);
         </section>
       )}
 
+{/* Why PrimeConnect Section */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+        <h2 className="text-3xl font-bold text-center mb-4">
+          Why Businesses Choose PrimeConnect
+        </h2>
+        <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+          We're not a provider — we're on your side.
+        </p>
 
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
+            <div className="text-3xl mb-3">💸</div>
+            <h3 className="font-bold text-lg mb-2">Free, No Obligation</h3>
+            <p className="text-slate-400 text-sm">
+              Comparing your options costs nothing, and there's never any
+              pressure to switch.
+            </p>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
+            <div className="text-3xl mb-3">🔍</div>
+            <h3 className="font-bold text-lg mb-2">Every Major Provider</h3>
+            <p className="text-slate-400 text-sm">
+              We compare AT&T, Spectrum, Comcast, Cox, and more — so you don't
+              have to call each one yourself.
+            </p>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
+            <div className="text-3xl mb-3">📍</div>
+            <h3 className="font-bold text-lg mb-2">Oklahoma-Based</h3>
+            <p className="text-slate-400 text-sm">
+              We're local experts who understand what's actually available in
+              your area — not a national call center.
+            </p>
+          </div>
+
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-center">
+            <div className="text-3xl mb-3">⚡</div>
+            <h3 className="font-bold text-lg mb-2">Fast, Real Answers</h3>
+            <p className="text-slate-400 text-sm">
+              Get matched with options in minutes, not days of back-and-forth
+              phone calls.
+            </p>
+          </div>
+        </div>
+      </section>
 
 {/* FAQ Section */}
       <section className="max-w-3xl mx-auto px-6 pb-24">
@@ -683,6 +729,7 @@ setLoading(true);
           ))}
         </div>
       </section>
+
 
     </main>
   );
