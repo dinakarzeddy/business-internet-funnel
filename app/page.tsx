@@ -280,12 +280,28 @@ setLoading(true);
         })}}
       />
       <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-  <div className="text-2xl font-bold text-white">
-    Prime<span className="text-blue-500">Connect</span>
-  </div>
+        <div className="text-2xl font-bold text-white">
+          Prime<span className="text-blue-500">Connect</span>
+        </div>
 
- 
-</nav>
+        <div className="hidden md:flex items-center gap-6 text-sm">
+        <a href="/about" className="text-slate-300 hover:text-blue-500 transition-colors">
+    About
+  </a>
+          <a href="/savings-calculator" className="text-slate-300 hover:text-blue-500 transition-colors">
+            Savings Calculator
+          </a>
+          <a href="/compare-providers" className="text-slate-300 hover:text-blue-500 transition-colors">
+            Compare Providers
+          </a>
+          <a href="/coverage-map" className="text-slate-300 hover:text-blue-500 transition-colors">
+            Coverage Map
+          </a>
+          <a href="/providers" className="text-slate-300 hover:text-blue-500 transition-colors">
+            Our Partners
+          </a>
+        </div>
+      </nav>
       <section id="questionnaire" className="max-w-7xl mx-auto px-6 py-24 text-center">
         
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
@@ -631,6 +647,8 @@ setLoading(true);
           </div>
         </section>
       )}
+
+
 
 {/* FAQ Section */}
       <section className="max-w-3xl mx-auto px-6 pb-24">
